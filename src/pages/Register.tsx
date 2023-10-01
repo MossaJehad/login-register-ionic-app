@@ -36,7 +36,7 @@ const Register: React.FC = () => {
     } else {
       setToastMsg('You have been registered');
     }
-    history.replace('/dashboard');
+    history.replace('/verify');
     setBusy(false)
   }
 

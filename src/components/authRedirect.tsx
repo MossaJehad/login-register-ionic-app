@@ -8,7 +8,10 @@ const useAuthRedirect = () => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        history.replace('/dashboard');
+        history.replace('/verify');
+        if(user.emailVerified){
+          history.push('/dashboard'); 
+         }
       }
     });
     return () => {

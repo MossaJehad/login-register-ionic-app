@@ -15,20 +15,22 @@ const Login: React.FC = () => {
     if(password.trim() === '' || email.trim() === ''){
       setToastMsg('You must fill in all the fields')
       if(password.length < 6) {
-        setToastMsg('Password must be at least 6 characters')
+      setToastMsg('Password must be at least 6 characters')
       }
     }
     const res = await loginUser(email, password);
     if (!res) {
-      setToastMsg('Oops Failed to login'); 
+      setToastMsg('Oops Failed to login');
     } else {
+      useAuthRedirect();
       setToastMsg('Logged in');
     }
-    setBusy(false)
+    setTimeout(() => {
+      setBusy(false)
+    }, 3000);
   }
 
   const [showToast, setShowToast] = useState(false);
-  
 
   return (
     <IonPage>
@@ -99,9 +101,3 @@ const Login: React.FC = () => {
 };
 
 export default Login;
-
-
-
-
-
-
